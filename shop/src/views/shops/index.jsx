@@ -1,7 +1,15 @@
-import React from 'react'
+import React,{Component} from 'react'
+import {goods} from '@/api/shop'
 
-function Shops(){
-    return <div>Shops</div>
+class Shops extends Component{
+    render(){
+        return <div>Shops</div>
+    }
+    componentDidMount(){
+        goods({store_id:this.props.match.params.id}).then(res => {
+
+        })
+    }
 }
 
 export default Shops

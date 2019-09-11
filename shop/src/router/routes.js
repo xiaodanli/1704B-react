@@ -16,8 +16,6 @@ function Loading(){
     return <div>loading...</div>
 }
 
-
-
 console.log(import('@/views/login'))
 
 import('@/views/login').then(res => {
@@ -88,15 +86,6 @@ const Order = Loadable({
     loading: Loading,
 })
 
-const One = Loadable({
-    loader: () => import('@/views/citys/one'),
-    loading: Loading,
-})
-
-const Two = Loadable({
-    loader: () => import('@/views/citys/two'),
-    loading: Loading,
-})
 
 const routes = [
     {
@@ -109,24 +98,10 @@ const routes = [
     },
     {
         path:'/citys',
-        component:Citys,
-        children:[
-            {
-                path:'/citys/one',
-                component:One
-            },
-            {
-                path:'/citys/two',
-                component:Two
-            },
-            {
-                path:'/citys',
-                redirect:'/citys/one'
-            }
-        ]
+        component:Citys
     },
     {
-        path:'/shops',
+        path:'/shops/:id',
         component:Shops
     },
     {

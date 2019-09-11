@@ -331,7 +331,7 @@ module.exports = function(webpackEnv) {
                 
               },
               loader: require.resolve('eslint-loader'),
-            },
+            }
           ],
           include: paths.appSrc,
         },

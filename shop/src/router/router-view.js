@@ -1,7 +1,6 @@
 import React from 'react'
 import {Switch,Route,Redirect} from 'react-router-dom'
 
-
 function RouterView({routes}){
     // Route Redirect
     let RouteArr = routes.filter(item => !item.redirect);
@@ -15,9 +14,15 @@ function RouterView({routes}){
             <Route path='/write' component={Write}/>
             <Route path='/my' component={My}/>
             <Route path='/order' component={Order}/> */}
-            {/* {RouteArr.map(item => <Route key={item.path} path={item.path} component={item.component}/>)} */}
+
+            {/* /citys  --->  Citys */}
+            {
+                RouteArr.map(item => <Route key={item.path} path={item.path} render={(props) => {
+                    return <item.component {...props} routes={item.children}></item.component>
+                }}/>)
+            }
             
-            {RouteArr.map(item => <Route key={item.path} path={item.path} render={(props) => {return <item.component routes={item.children} {...props}></item.component>}}/>)} 
+            {/* {RouteArr.map(item => <Route key={item.path} path={item.path} render={(props) => {return <item.component routes={item.children} {...props}></item.component>}}/>)}  */}
             {redirectArr.map(item => <Redirect from={item.path} to={item.redirect} key={item.path}></Redirect>)}
             {/* <Redirect from="/" to="/citys"></Redirect> */}
         </Switch>
